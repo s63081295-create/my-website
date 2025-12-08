@@ -1,10 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>はじめてのホームページ</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ラーメン屋 ○○｜公式ホームページ</title>
+  <style>
+    body { font-family: 'Helvetica Neue', sans-serif; margin: 0; padding: 0; background: #f5f5f0; color: #333; }
+    header { background: #d32f2f; color: white; padding: 40px 20px; text-align: center; }
+    header h1 { font-size: 2.8rem; margin: 0; }
+    header p { margin: 10px 0 0; font-size: 1.2rem; }
+
+    nav { background: white; border-bottom: 2px solid #eee; padding: 15px; display: flex; justify-content: center; gap: 30px; position: sticky; top: 0; }
+    nav a { color: #d32f2f; font-weight: bold; text-decoration: none; font-size: 1.1rem; }
+
+    .hero { height: 380px; background: url('hero-ramen.jpg') center/cover no-repeat; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold; text-shadow: 2px 2px 10px rgba(0,0,0,0.7); }
+
+    .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+    h2 { border-left: 10px solid #d32f2f; padding-left: 15px; font-size: 2rem; margin-top: 60px; }
+
+    /* カード型メニュー（MOS風） */
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
+    .menu-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .menu-card img { width: 100%; height: 180px; object-fit: cover; }
+    .menu-card-body { padding: 15px; }
+    .menu-card-body h3 { margin: 0; font-size: 1.4rem; color: #d32f2f; }
+    .menu-card-body p { margin: 8px 0 0; line-height: 1.6; }
+
+    footer { background: #333; color: white; padding: 30px; text-align: center; margin-top: 60px; }
+  </style>
 </head>
 <body>
-  <h1>こんにちは！これは私の最初のHPです。</h1>
+  <header>
+    <h1>ラーメン屋 ○○</h1>
+    <p>素材にこだわる。味にこだわる。心に残る一杯を。</p>
+  </header>
+
+  <nav>
+    <a href="#about">当店について</a>
+    <a href="#menu">メニュー</a>
+    <a href="#access">アクセス</a>
+  </nav>
+
+  <div class="hero">こだわりの本格派ラーメン</div>
+
+  <div class="container">
+    <section id="about">
+      <h2>当店について</h2>
+      <p>ラーメン屋○○は、きれいな空気と水が流れる地域でつくる自家製スープと麺を使い、「また来たい」と言っていただけるラーメンを提供しています。素材本来の味を大切に、余計な添加物は使わず、毎日丁寧に仕込んでいます。</p>
+    </section>
+
+    <section id="menu">
+      <h2>メニュー</h2>
+      <div class="menu-grid">
+        <div class="menu-card">
+          <img src="ramen-shoyu.jpg" alt="醤油ラーメン">
+          <div class="menu-card-body">
+            <h3>醤油ラーメン　850円</h3>
+            <p>あっさりながら旨味の深いスープが人気の一杯。</p>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <img src="ramen-miso.jpg" alt="味噌ラーメン">
+          <div class="menu-card-body">
+            <h3>味噌ラーメン　900円</h3>
+            <p>濃厚な味噌スープと麺が相性抜群。</p>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <img src="ramen-tonkotsu.jpg" alt="豚骨ラーメン">
+          <div class="menu-card-body">
+            <h3>豚骨ラーメン　950円</h3>
+            <p>クリーミーでコクのある本格豚骨スープ。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="access">
+      <h2>アクセス</h2>
+      <p>〒000-0000 東京都〇〇区〇〇1-2-3<br>最寄駅：〇〇駅から徒歩5分</p>
+      <p>営業時間：11:00〜22:00（定休日：火曜日）</p>
+    </section>
+  </div>
+
+  <footer>
+    © 2025 ラーメン屋 ○○
+  </footer>
 </body>
 </html>
