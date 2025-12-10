@@ -45,4 +45,52 @@ export default function MenuPage() {
   );
 }
 
-const styles: { [key: st]()
+const styles: { [key: string]: any } = {
+  body: {
+    background: "#121212",
+    color: "#fff",
+    fontFamily: "sans-serif",
+    padding: "20px",
+    lineHeight: 1.7,
+  },
+  title: {
+    textAlign: "center",
+    marginBottom: "40px",
+    fontSize: "2rem",
+  },
+  category: {
+    marginBottom: "50px",
+  },
+  categoryTitle: {
+    fontSize: "1.8rem",
+    borderLeft: "6px solid #ff8c42",
+    paddingLeft: "12px",
+    marginBottom: "20px",
+  },
+  menuList: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
+    gap: "20px",
+  },
+  menuItem: {
+    background: "#1e1e1e",
+    padding: "18px",
+    borderRadius: "12px",
+    boxShadow: "0 4px 10px rgba(0,0,0,0.5)",
+  },
+  img: {
+    width: "100%",
+    borderRadius: "10px",
+    marginBottom: "10px",
+  },
+  menuName: {
+    fontSize: "1.3rem",
+    margin: "0 0 8px 0",
+    color: "#ffdd57",
+  },
+  price: {
+    fontSize: "1.2rem",
+    fontWeight: "bold",
+    color: "#ff8c42",
+  },
+};
