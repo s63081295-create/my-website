@@ -1,96 +1,112 @@
-export default function MenuPage() {
-  return (
-    <div style={styles.body}>
-      <h1 style={styles.title}>メニュー一覧</h1>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>メニュー｜荒野のラーメン</title>
+  <style>
+    body {
+      background: #121212;
+      color: #fff;
+      font-family: sans-serif;
+      padding: 20px;
+      line-height: 1.7;
+    }
 
-      {/* 志那そば */}
-      <section style={styles.category}>
-        <h2 style={styles.categoryTitle}>志那そば</h2>
-        <div style={styles.menuList}>
-          <div style={styles.menuItem}>
-            <img src="/images/ramen_shoyu.jpg" alt="醤油ラーメン" style={styles.img} />
-            <h3 style={styles.menuName}>醤油ラーメン</h3>
-            <p>あっさりしつつコクのある醤油スープ。王道の一杯。</p>
-            <div style={styles.price}>¥800</div>
-          </div>
-        </div>
-      </section>
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
 
-      {/* 味噌ラーメン */}
-      <section style={styles.category}>
-        <h2 style={styles.categoryTitle}>味噌ラーメン</h2>
-        <div style={styles.menuList}>
-          <div style={styles.menuItem}>
-            <img src="/images/ramen_miso.jpg" alt="味噌ラーメン" style={styles.img} />
-            <h3 style={styles.menuName}>味噌ラーメン</h3>
-            <p>濃厚でまろやか。野菜との相性抜群の味噌スープ。</p>
-            <div style={styles.price}>¥900</div>
-          </div>
-        </div>
-      </section>
+    .category {
+      margin-bottom: 50px;
+    }
 
-      {/* 豚骨ラーメン */}
-      <section style={styles.category}>
-        <h2 style={styles.categoryTitle}>豚骨ラーメン</h2>
-        <div style={styles.menuList}>
-          <div style={styles.menuItem}>
-            <img src="/images/ramen_tonkotsu.jpg" alt="豚骨ラーメン" style={styles.img} />
-            <h3 style={styles.menuName}>豚骨ラーメン</h3>
-            <p>クリーミーでしっかりした旨味の濃厚豚骨スープ。</p>
-            <div style={styles.price}>¥850</div>
-          </div>
-        </div>
-      </section>
+    .category h2 {
+      font-size: 1.8rem;
+      border-left: 6px solid #ff8c42;
+      padding-left: 12px;
+      margin-bottom: 20px;
+    }
+
+    .menu-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .menu-item {
+      background: #1e1e1e;
+      padding: 18px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    .menu-item img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .menu-item h3 {
+      font-size: 1.3rem;
+      margin: 0 0 8px 0;
+      color: #ffdd57;
+    }
+
+    .menu-item p {
+      margin: 0 0 10px 0;
+    }
+
+    .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #ff8c42;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>メニュー一覧</h1>
+
+  <!-- 志那そばカテゴリー -->
+  <section class="category">
+    <h2>志那そば</h2>
+    <div class="menu-list">
+      <div class="menu-item">
+        <img src="images/ramen_shoyu.jpg" alt="醤油ラーメン">
+        <h3>醤油ラーメン</h3>
+        <p>あっさりしつつコクのある醤油スープ。王道の一杯。</p>
+        <div class="price">¥800</div>
+      </div>
     </div>
-  );
-}
+  </section>
 
-const styles: { [key: string]: any } = {
-  body: {
-    background: "#121212",
-    color: "#fff",
-    fontFamily: "sans-serif",
-    padding: "20px",
-    lineHeight: 1.7,
-  },
-  title: {
-    textAlign: "center",
-    marginBottom: "40px",
-    fontSize: "2rem",
-  },
-  category: {
-    marginBottom: "50px",
-  },
-  categoryTitle: {
-    fontSize: "1.8rem",
-    borderLeft: "6px solid #ff8c42",
-    paddingLeft: "12px",
-    marginBottom: "20px",
-  },
-  menuList: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
-    gap: "20px",
-  },
-  menuItem: {
-    background: "#1e1e1e",
-    padding: "18px",
-    borderRadius: "12px",
-    boxShadow: "0 4px 10px rgba(0,0,0,0.5)",
-  },
-  img: {
-    width: "100%",
-    borderRadius: "10px",
-    marginBottom: "10px",
-  },
-  menuName: {
-    fontSize: "1.3rem",
-    margin: "0 0 8px 0",
-    color: "#ffdd57",
-  },
-  price: {
-    fontSize: "1.2rem",
-    fontWeight: "bold",
-    color: "#ff8c42",
-  },
-};
+  <!-- 味噌カテゴリー -->
+  <section class="category">
+    <h2>味噌ラーメン</h2>
+    <div class="menu-list">
+      <div class="menu-item">
+        <img src="images/ramen_miso.jpg" alt="味噌ラーメン">
+        <h3>味噌ラーメン</h3>
+        <p>濃厚でまろやか。野菜との相性抜群の味噌スープ。</p>
+        <div class="price">¥900</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 豚骨カテゴリー -->
+  <section class="category">
+    <h2>豚骨ラーメン</h2>
+    <div class="menu-list">
+      <div class="menu-item">
+        <img src="images/ramen_tonkotsu.jpg" alt="豚骨ラーメン">
+        <h3>豚骨ラーメン</h3>
+        <p>クリーミーでしっかりした旨味の濃厚豚骨スープ。</p>
+        <div class="price">¥850</div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
