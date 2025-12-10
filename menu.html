@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>メニュー｜荒野のラーメン</title>
+  <style>
+    body {
+      background: #121212;
+      color: #fff;
+      font-family: sans-serif;
+      padding: 20px;
+      line-height: 1.7;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .category {
+      margin-bottom: 50px;
+    }
+
+    .category h2 {
+      font-size: 1.8rem;
+      border-left: 6px solid #ff8c42;
+      padding-left: 12px;
+      margin-bottom: 20px;
+    }
+
+    .menu-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .menu-item {
+      background: #1e1e1e;
+      padding: 18px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    .menu-item img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .menu-item h3 {
+      font-size: 1.3rem;
+      margin: 0 0 8px 0;
+      color: #ffdd57;
+    }
+
+    .menu-item p {
+      margin: 0 0 10px 0;
+    }
+
+    .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #ff8c42;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>メニュー一覧</h1>
+
+  <!-- 志那そばカテゴリー -->
+  <section class="category">
+    <h2>志那そば</h2>
+    <div class="menu-list">
+      <div class="menu-item">
+        <img src="images/ramen_shoyu.jpg" alt="醤油ラーメン">
+        <h3>醤油ラーメン</h3>
+        <p>あっさりしつつコクのある醤油スープ。王道の一杯。</p>
+        <div class="price">¥800</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 味噌カテゴリー -->
+  <section class="category">
+    <h2>味噌ラーメン</h2>
+    <div class="menu-list">
+      <div class="menu-item">
+        <img src="images/ramen_miso.jpg" alt="味噌ラーメン">
+        <h3>味噌ラーメン</h3>
+        <p>濃厚でまろやか。野菜との相性抜群の味噌スープ。</p>
+        <div class="price">¥900</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 豚骨カテゴリー -->
+  <section class="category">
+    <h2>豚骨ラーメン</h2>
+    <div class="menu-list">
+      <div class="menu-item">
+        <img src="images/ramen_tonkotsu.jpg" alt="豚骨ラーメン">
+        <h3>豚骨ラーメン</h3>
+        <p>クリーミーでしっかりした旨味の濃厚豚骨スープ。</p>
+        <div class="price">¥850</div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
