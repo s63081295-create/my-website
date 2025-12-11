@@ -4,129 +4,236 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>メニュー | ラーメン店</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #fff8e6;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      scroll-behavior: smooth;
+    }
+
+    /* トップページに戻るボタン（左上固定） */
+    .back-home {
+      position: fixed;
+      top: 25px;     /* ← 少し下げた */
+      left: 20px;
+      background: #c1272d;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      z-index: 999;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    }
+
+    .container {
+      max-width: 1000px;
+      width: 100%;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #c1272d;
+      margin: 60px 0 25px;  /* 上にスペースを追加 */
+      font-size: 38px;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+
+    /* タブ */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      padding: 10px 20px;
+      background: #fff;
+      border-radius: 8px;
+      border: 2px solid #c1272d;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .tab.active {
+      background: #c1272d;
+      color: white;
+    }
+
+    /* 商品カード配置 */
+    .items {
+      display: none;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .items.active {
+      display: grid;
+    }
+
+    /* 商品カード */
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .card h3 {
+      margin: 10px 0 6px;
+      color: #c1272d;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .price {
+      display: block;
+      color: #000;
+      margin-bottom: 8px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    /* ホバー時の詳細表示 */
+    .detail {
+      position: absolute;
+      bottom: -100%;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      color: white;
+      padding: 15px;
+      font-size: 14px;
+      border-radius: 0 0 12px 12px;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover .detail {
+      bottom: 0;
+    }
+
+    /* トップへ戻るボタン（右下） */
+    #toTop {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #c1272d;
+      color: white;
+      padding: 12px 15px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      display: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      z-index: 999;
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 28px;
+      }
+      .back-home {
+        top: 15px;
+        left: 10px;
+        padding: 6px 10px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>メニュー</h1>
-    <a href="index.html">← トップへ戻る</a>
-  </header>
 
-  <!-- カテゴリタブ -->
-  <div class="tabs">
-    <button class="tab active" data-target="shina">志那そば</button>
-    <button class="tab" data-target="nintama">にんたまラーメン</button>
-    <button class="tab" data-target="gyokai">魚介とんこつ</button>
+  <!-- 左上固定ボタン -->
+  <a href="index.html" class="back-home">トップページに戻る</a>
+
+  <div class="container">
+    <h1>メニュー</h1>
+
+    <div class="tabs">
+      <div class="tab active" data-target="shina">志那そば</div>
+      <div class="tab" data-target="nintama">にんたまラーメン</div>
+      <div class="tab" data-target="gyokai">魚介とんこつ</div>
+    </div>
+
+    <!-- 志那そば -->
+    <div id="shina" class="items active">
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200?text=Shina+Soba" alt="">
+        <h3>志那そば</h3>
+        <span class="price">800円</span>
+        <div class="detail">ここに詳細説明が入ります。</div>
+      </div>
+    </div>
+
+    <!-- にんたま -->
+    <div id="nintama" class="items">
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200?text=Nintama" alt="">
+        <h3>にんたまラーメン</h3>
+        <span class="price">850円</span>
+        <div class="detail">ここに詳細説明が入ります。</div>
+      </div>
+    </div>
+
+    <!-- 魚介とんこつ -->
+    <div id="gyokai" class="items">
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200?text=Gyokai" alt="">
+        <h3>魚介とんこつ</h3>
+        <span class="price">900円</span>
+        <div class="detail">ここに詳細説明が入ります。</div>
+      </div>
+    </div>
+
   </div>
 
-  <!-- ========================= -->
-  <!-- 志那そば -->
-  <!-- ========================= -->
-  <section id="shina" class="menu-section active">
-    <h2>志那そば</h2>
-    <div class="menu-grid">
-
-      <div class="menu-item">
-        <div class="img-wrap">
-          <img src="images/ramen_shoyu.jpg" alt="志那そば">
-          <div class="detail">しょうゆベースの黒いスープが特徴。王道の一杯。</div>
-        </div>
-        <h3>志那そば</h3>
-        <p class="price">¥800（税込）</p>
-      </div>
-
-      <div class="menu-item">
-        <div class="img-wrap">
-          <img src="images/wantan.jpg" alt="ワンタンメン">
-          <div class="detail">志那そばスープにワンタンが加わり優しい味わい。</div>
-        </div>
-        <h3>ワンタンメン</h3>
-        <p class="price">¥950（税込）</p>
-      </div>
-
-      <div class="menu-item">
-        <div class="img-wrap">
-          <img src="images/chashu.jpg" alt="チャーシュー麺">
-          <div class="detail">特製チャーシューをたっぷり乗せた満足の一杯。</div>
-        </div>
-        <h3>チャーシュー麺</h3>
-        <p class="price">¥1050（税込）</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========================= -->
-  <!-- にんたまラーメン -->
-  <!-- ========================= -->
-  <section id="nintama" class="menu-section">
-    <h2>にんたまラーメン</h2>
-    <div class="menu-grid">
-
-      <div class="menu-item">
-        <div class="img-wrap">
-          <img src="images/nintama.jpg" alt="にんたまラーメン">
-          <div class="detail">にんにく×たまごのパンチある味わい。</div>
-        </div>
-        <h3>にんたまラーメン</h3>
-        <p class="price">¥900（税込）</p>
-      </div>
-
-      <div class="menu-item">
-        <div class="img-wrap">
-          <img src="images/nintama_chashu.jpg" alt="にんたまチャーシュー">
-          <div class="detail">ガッツリ食べたい人向けの一杯。</div>
-        </div>
-        <h3>にんたまチャーシュー</h3>
-        <p class="price">¥1100（税込）</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========================= -->
-  <!-- 魚介とんこつ -->
-  <!-- ========================= -->
-  <section id="gyokai" class="menu-section">
-    <h2>魚介とんこつ</h2>
-    <div class="menu-grid">
-
-      <div class="menu-item">
-        <div class="img-wrap">
-          <img src="images/gyokai.jpg" alt="魚介とんこつ">
-          <div class="detail">魚介だし×豚骨の濃厚スープ。</div>
-        </div>
-        <h3>魚介とんこつ</h3>
-        <p class="price">¥900（税込）</p>
-      </div>
-
-      <div class="menu-item">
-        <div class="img-wrap">
-          <img src="images/gyokai_special.jpg" alt="魚介とんこつスペシャル">
-          <div class="detail">チャーシューと具材を豪華に盛り付けた特製。</div>
-        </div>
-        <h3>魚介とんこつスペシャル</h3>
-        <p class="price">¥1200（税込）</p>
-      </div>
-
-    </div>
-  </section>
+  <!-- トップへ戻るボタン -->
+  <div id="toTop">↑</div>
 
   <script>
+    /* タブ切り替え */
     const tabs = document.querySelectorAll(".tab");
-    const sections = document.querySelectorAll(".menu-section");
+    const items = document.querySelectorAll(".items");
 
-    tabs.forEach((tab) => {
+    tabs.forEach(tab => {
       tab.addEventListener("click", () => {
-        tabs.forEach((t) => t.classList.remove("active"));
-        sections.forEach((sec) => sec.classList.remove("active"));
-
+        tabs.forEach(t => t.classList.remove("active"));
         tab.classList.add("active");
+
+        items.forEach(i => i.classList.remove("active"));
         document.getElementById(tab.dataset.target).classList.add("active");
       });
+    });
+
+    /* トップへ戻るボタン表示 */
+    const toTop = document.getElementById("toTop");
+
+    window.addEventListener("scroll", () => {
+      toTop.style.display = window.scrollY > 300 ? "block" : "none";
+    });
+
+    toTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
   </script>
 
 </body>
 </html>
-
