@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>メニュー | ラーメン店</title>
 
-  <!-- GitHub Pagesで相対リンクが狂わないようにする -->
-  <base href="./">
-
   <style>
     body {
       font-family: sans-serif;
@@ -22,7 +19,7 @@
     /* トップページに戻るボタン（左上固定） */
     .back-home {
       position: fixed;
-      top: 25px;
+      top: 25px;     /* ← 少し下げた */
       left: 20px;
       background: #c1272d;
       color: white;
@@ -44,7 +41,7 @@
 
     h1 {
       color: #c1272d;
-      margin: 60px 0 25px;
+      margin: 60px 0 25px;  /* 上にスペースを追加 */
       font-size: 38px;
       font-weight: bold;
       letter-spacing: 3px;
@@ -237,5 +234,6 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   </script>
+
 </body>
 </html>
