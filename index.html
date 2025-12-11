@@ -7,67 +7,61 @@
 
   <style>
     body { font-family: 'Helvetica Neue', sans-serif; margin: 0; padding: 0; background: #f5f5f0; color: #333; }
-    header { background: #8B0000; color: white; padding: 40px 20px; text-align: center; }
+    header { background: #d32f2f; color: white; padding: 40px 20px; text-align: center; }
     header h1 { font-size: 2.8rem; margin: 0; }
     header p { margin: 10px 0 0; font-size: 1.2rem; }
 
     nav { background: white; border-bottom: 2px solid #eee; padding: 15px; display: flex; justify-content: center; gap: 30px; position: sticky; top: 0; }
     nav a { color: #d32f2f; font-weight: bold; text-decoration: none; font-size: 1.1rem; }
+    nav a:hover { opacity: 0.7; }
 
-    .hero { height: 380px; background: url('hero-ramen.jpg') center/cover no-repeat; display: flex; align-items: center; justify-content: center; color: white; font-size: 6rem; font-weight: bold; text-shadow: 2px 2px 10px rgba(0,0,0,0.7); }
+    /* ヒーロー画像 */
+    .hero {
+      height: 380px;
+      background: url('hero-ramen.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3.2rem;   /* PC大きめ */
+      font-weight: bold;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+    }
 
-
-    
     .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
 
     h2 { border-left: 10px solid #d32f2f; padding-left: 15px; font-size: 2rem; margin-top: 60px; }
 
-    /* --- 山岡家風メニューセクション --- */
-    .menu-yamaoka h2 {
-      border-left: 10px solid #d32f2f;
-      padding-left: 12px;
-    }
-
-    .menu-lead {
-      margin-top: 10px;
-      font-size: 1.1rem;
-    }
-
-    /* リスト全体 */
+    /* --- メニューセクション（横3つカード） --- */
     .menu-list {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);  /* PCで横3つ */
       gap: 25px;
       margin-top: 30px;
     }
 
-    /* 各メニューカード（横長） */
     .menu-item {
       background: #fff;
       border-radius: 10px;
       overflow: hidden;
-      display: flex;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column; /* カード内は縦並び */
     }
 
-    /* 写真を大きく横へ */
     .menu-item img {
-      width: 260px;
+      width: 100%;
       height: 180px;
       object-fit: cover;
     }
 
-    /* テキスト情報 */
     .menu-info {
       padding: 15px 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
     }
 
     .menu-info h3 {
       margin: 0;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       color: #d32f2f;
       display: flex;
       justify-content: space-between;
@@ -100,26 +94,36 @@
       text-decoration: none;
       font-size: 1.1rem;
       font-weight: bold;
+      transition: 0.3s;
     }
 
-    /* スマホ対応 */
-    @media (max-width: 600px) {
-      .menu-item {
-        flex-direction: column;
-      }
-      .menu-item img {
-        width: 100%;
-        height: 200px;
-      }
-    
-    @media (max-width: 600px) {
-  .hero {
-    font-size: 1.8rem; /* ← スマホ用の文字サイズ */
-    height: 250px;     /* 必要なら高さも下げる */
-  }
-}
+    .menu-detail-btn:hover {
+      background: #b71c1c;
+    }
 
-    footer { background: #121212; color: white; padding: 30px; text-align: center; margin-top: 40px; }
+    /* アクセス */
+    footer { background: #121212; color: white; padding: 30px; text-align: center; margin-top: 60px; }
+
+    /* ===== スマホ対応 ===== */
+    @media (max-width: 600px) {
+
+      .hero {
+        height: 250px;
+        font-size: 1.8rem;  /* スマホは小さく */
+      }
+
+      h2 { font-size: 1.4rem; }
+
+      .menu-list {
+        grid-template-columns: 1fr; /* スマホは1列 */
+        gap: 15px;
+      }
+
+      .menu-item img { height: 200px; }
+      .menu-info h3 { font-size: 1.2rem; }
+
+      nav a { font-size: 0.95rem; }
+    }
   </style>
 </head>
 
@@ -132,7 +136,7 @@
 
   <nav>
     <a href="#about">当店について</a>
-    <a href="menu.html">メニュー</a>
+    <a href="menu.html">メニュー</a>  <!-- ★ 直接飛べるように修正済み -->
     <a href="#access">アクセス</a>
   </nav>
 
@@ -146,7 +150,7 @@
     </section>
 
     <!-- ===================== -->
-    <!--   山岡家風メニュー   -->
+    <!--   メニュー (トップ用) -->
     <!-- ===================== -->
     <section id="menu" class="menu-yamaoka">
       <h2>メニュー</h2>
@@ -174,8 +178,7 @@
           <img src="ramen-tonkotsu.jpg" alt="徳島ラーメン">
           <div class="menu-info">
             <h3>徳島ラーメン <span class="price">950円</span></h3>
-            <p>魚介豚骨をベースにしたご当地ラーメン。
-               ライスと一緒に食べるのがおススメ。</p>
+            <p>魚介豚骨をベースにしたご当地ラーメン。ライスと一緒に食べるのがおススメ。</p>
           </div>
         </div>
 
@@ -196,7 +199,7 @@
   </div>
 
   <footer>
-    © 2025 荒野のラーメン
+    © 2025 ラーメン屋 ○○
   </footer>
 
 </body>
