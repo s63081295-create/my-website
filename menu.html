@@ -8,7 +8,7 @@
   <style>
     /* ===== 全体 ===== */
     body {
-      background: #f5f5f0;      /* トップページと同じ */
+      background: #f5f5f0;
       color: #333;
       font-family: 'Helvetica Neue', sans-serif;
       padding: 20px;
@@ -18,13 +18,13 @@
     h1 {
       text-align: center;
       margin-bottom: 40px;
-      color: #d32f2f;           /* トップと同じ赤 */
+      color: #d32f2f;
     }
 
     /* ===== カテゴリ見出し ===== */
     .category h2 {
       font-size: 1.8rem;
-      border-left: 10px solid #d32f2f; /* トップと統一 */
+      border-left: 10px solid #d32f2f;
       padding-left: 12px;
       margin-bottom: 20px;
       color: #333;
@@ -42,10 +42,10 @@
     }
 
     .menu-item {
-      background: white;        /* トップのカード色に統一 */
+      background: white;
       padding: 18px;
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* 明るい影 */
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     .menu-item img {
@@ -57,7 +57,7 @@
     .menu-item h3 {
       font-size: 1.3rem;
       margin: 0 0 8px 0;
-      color: #d32f2f;           /* トップページと同じ */
+      color: #d32f2f;
     }
 
     .menu-item p {
@@ -67,7 +67,7 @@
     .price {
       font-size: 1.2rem;
       font-weight: bold;
-      color: #d32f2f;           /* 赤で統一 */
+      color: #d32f2f;
     }
 
     /* ===== スマホ最適化 ===== */
@@ -108,26 +108,22 @@
       }
     }
 
+    /* ===== トップページへ戻るボタン ===== */
+    .back-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 10px 18px;
+      background: #d32f2f;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
 
-.back-btn:hover {
-  background: #b71c1c;
-}
-/* トップページへ戻るボタン */
-.back-btn {
-  display: inline-block;
-  margin-top: 30px;
-  padding: 10px 18px;
-  background: #d32f2f;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.back-btn:hover {
-  background: #b71c1c;
-}
+    .back-btn:hover {
+      background: #b71c1c;
+    }
 
   </style>
 </head>
@@ -141,7 +137,6 @@
     <h2>志那そば</h2>
     <div class="menu-list">
 
-      <!-- 志那そば -->
       <div class="menu-item">
         <img src="images/ramen_shoyu.jpg" alt="志那そば">
         <h3>志那そば</h3>
@@ -149,7 +144,6 @@
         <div class="price">¥800</div>
       </div>
 
-      <!-- ワンタン麺 -->
       <div class="menu-item">
         <img src="images/wantan.jpg" alt="ワンタン麺">
         <h3>ワンタン麺</h3>
@@ -157,7 +151,6 @@
         <div class="price">¥950</div>
       </div>
 
-      <!-- チャーシュー麺 -->
       <div class="menu-item">
         <img src="images/chashu.jpg" alt="チャーシュー麺">
         <h3>チャーシュー麺</h3>
@@ -197,7 +190,5 @@
   <!-- ▼ トップページに戻るボタン -->
   <a href="index.html" class="back-btn">トップページに戻る</a>
 
-
 </body>
 </html>
-
