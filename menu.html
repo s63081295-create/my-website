@@ -6,10 +6,11 @@
   <title>メニュー｜荒野のラーメン</title>
 
   <style>
+    /* ===== 全体 ===== */
     body {
-      background:#1e1e1e;
-      color: #fff;
-      font-family: sans-serif;
+      background: #f5f5f0;      /* トップページと同じ */
+      color: #333;
+      font-family: 'Helvetica Neue', sans-serif;
       padding: 20px;
       line-height: 1.7;
     }
@@ -17,29 +18,159 @@
     h1 {
       text-align: center;
       margin-bottom: 40px;
+      color: #d32f2f;           /* トップと同じ赤 */
     }
 
-    /* ===== トップページに戻るボタン ===== */
-    .back-btn {
-      display: inline-block;
-      margin-bottom: 25px;
-      padding: 10px 18px;
-      border: 2px solid #ff8c42;
-      color: #ff8c42;
-      border-radius: 6px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-    .back-btn:hover {
-      background: #ff8c42;
-      color: #1e1e1e;
+    /* ===== カテゴリ見出し ===== */
+    .category h2 {
+      font-size: 1.8rem;
+      border-left: 10px solid #d32f2f; /* トップと統一 */
+      padding-left: 12px;
+      margin-bottom: 20px;
+      color: #333;
     }
 
     .category {
       margin-bottom: 50px;
     }
 
-    .category
+    /* ===== 枠レイアウト（カード） ===== */
+    .menu-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
 
-    
+    .menu-item {
+      background: white;        /* トップのカード色に統一 */
+      padding: 18px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* 明るい影 */
+    }
+
+    .menu-item img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .menu-item h3 {
+      font-size: 1.3rem;
+      margin: 0 0 8px 0;
+      color: #d32f2f;           /* トップページと同じ */
+    }
+
+    .menu-item p {
+      margin: 0 0 10px 0;
+    }
+
+    .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #d32f2f;           /* 赤で統一 */
+    }
+
+    /* ===== スマホ最適化 ===== */
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+        margin-bottom: 25px;
+      }
+
+      .category h2 {
+        font-size: 1.4rem;
+      }
+
+      .menu-item {
+        padding: 12px;
+        border-radius: 10px;
+      }
+
+      .menu-item img {
+        height: 130px;
+        object-fit: cover;
+      }
+
+      .menu-item h3 {
+        font-size: 1.1rem;
+      }
+
+      .price {
+        font-size: 1.05rem;
+      }
+
+      .menu-list {
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>メニュー一覧</h1>
+
+  <!-- 志那そば -->
+  <section class="category">
+    <h2>志那そば</h2>
+    <div class="menu-list">
+
+      <!-- 志那そば -->
+      <div class="menu-item">
+        <img src="images/ramen_shoyu.jpg" alt="志那そば">
+        <h3>志那そば</h3>
+        <p>しょうゆベースの黒いスープが特徴。王道の一杯。</p>
+        <div class="price">¥800</div>
+      </div>
+
+      <!-- ワンタン麺 -->
+      <div class="menu-item">
+        <img src="images/wantan.jpg" alt="ワンタン麺">
+        <h3>ワンタン麺</h3>
+        <p>つるっとしたワンタンが人気の一杯。</p>
+        <div class="price">¥950</div>
+      </div>
+
+      <!-- チャーシュー麺 -->
+      <div class="menu-item">
+        <img src="images/chashu.jpg" alt="チャーシュー麺">
+        <h3>チャーシュー麺</h3>
+        <p>とろとろチャーシューを贅沢にトッピング。</p>
+        <div class="price">¥1050</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- にんたまラーメン -->
+  <section class="category">
+    <h2>にんたまラーメン</h2>
+    <div class="menu-list">
+      <div class="menu-item">
+        <img src="images/ramen_miso.jpg" alt="にんたまラーメン">
+        <h3>にんたまラーメン</h3>
+        <p>パンチの効いたにんにくと濃厚スープ。</p>
+        <div class="price">¥900</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 徳島ラーメン -->
+  <section class="category">
+    <h2>徳島ラーメン</h2>
+    <div class="menu-list">
+      <div class="menu-item">
+        <img src="images/ramen_tonkotsu.jpg" alt="徳島ラーメン">
+        <h3>徳島ラーメン</h3>
+        <p>甘辛豚骨に生卵を絡めたご当地ラーメン。</p>
+        <div class="price">¥850</div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
