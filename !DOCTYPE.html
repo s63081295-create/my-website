@@ -4,238 +4,199 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>メニュー | ラーメン店</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <!-- GitHub Pagesで相対リンクが狂わないようにする -->
+  <base href="./">
+
   <style>
     body {
-      font-family: "Yu Gothic", sans-serif;
+      font-family: sans-serif;
+      background: #fff8e6;
       margin: 0;
       padding: 0;
-      background: #fafafa;
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      justify-content: center;
+      scroll-behavior: smooth;
     }
 
-    header {
-      width: 100%;
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .menu-title {
-      text-align: center;
-      font-size: 2.6rem;
+    /* トップページに戻るボタン（左上固定） */
+    .back-home {
+      position: fixed;
+      top: 25px;
+      left: 20px;
+      background: #c1272d;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 8px;
+      text-decoration: none;
       font-weight: bold;
-      margin: 20px 0 10px;
-      letter-spacing: 0.12em;
+      font-size: 14px;
+      z-index: 999;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
     }
 
-    .title-line {
-      width: 120px;
-      height: 3px;
-      background: #333;
-      margin: 0 auto 25px;
-      border-radius: 3px;
+    .container {
+      max-width: 1000px;
+      width: 100%;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #c1272d;
+      margin: 60px 0 25px;
+      font-size: 38px;
+      font-weight: bold;
+      letter-spacing: 3px;
     }
 
     /* タブ */
     .tabs {
       display: flex;
-      gap: 10px;
       justify-content: center;
+      gap: 10px;
       margin-bottom: 25px;
-      overflow-x: auto;
-      padding: 5px 10px;
+      flex-wrap: wrap;
     }
 
     .tab {
-      padding: 10px 18px;
-      border-radius: 25px;
-      background: #e8e8e8;
+      padding: 10px 20px;
+      background: #fff;
+      border-radius: 8px;
+      border: 2px solid #c1272d;
       cursor: pointer;
-      white-space: nowrap;
       font-weight: bold;
-      transition: 0.2s;
     }
 
     .tab.active {
-      background: #333;
-      color: #fff;
+      background: #c1272d;
+      color: white;
     }
 
-    /* 商品グリッド */
-    .menu-grid {
-      width: 90%;
-      max-width: 1000px;
+    /* 商品カード配置 */
+    .items {
+      display: none;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .items.active {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin-bottom: 50px;
-    }
-
-    @media (max-width: 900px) {
-      .menu-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .menu-grid {
-        grid-template-columns: repeat(1, 1fr);
-      }
     }
 
     /* 商品カード */
-    .item {
-      position: relative;
+    .card {
       background: white;
       border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: 0.2s;
-    }
-
-    .item img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    /* 値段は常に表示 */
-    .price-tag {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: rgba(0,0,0,0.75);
-      color: #fff;
-      padding: 5px 10px;
-      border-radius: 6px;
-      font-size: 1rem;
-      font-weight: bold;
-    }
-
-    .item-info {
       padding: 15px;
-      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
     }
 
-    .item-title {
-      font-size: 1.2rem;
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .card h3 {
+      margin: 10px 0 6px;
+      color: #c1272d;
+      font-size: 18px;
       font-weight: bold;
-      margin-bottom: 5px;
     }
 
-    .item-desc {
-      font-size: 0.9rem;
-      color: #666;
+    .price {
+      display: block;
+      color: #000;
+      margin-bottom: 8px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    /* ホバー時の詳細表示 */
+    .detail {
+      position: absolute;
+      bottom: -100%;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      color: white;
+      padding: 15px;
+      font-size: 14px;
+      border-radius: 0 0 12px 12px;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover .detail {
+      bottom: 0;
+    }
+
+    /* トップへ戻るボタン（右下） */
+    #toTop {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #c1272d;
+      color: white;
+      padding: 12px 15px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      display: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      z-index: 999;
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 28px;
+      }
+      .back-home {
+        top: 15px;
+        left: 10px;
+        padding: 6px 10px;
+      }
     }
   </style>
 </head>
-
 <body>
-  <!-- Top-left Home Button -->
-  <a href="index.html" class="btn-home" style="position:fixed; top:20px; left:20px; background:#c62828; color:#fff; padding:10px 18px; border-radius:8px; text-decoration:none; font-weight:bold; z-index:1000;">HOME</a>
-  <header>
-    <h1 class="menu-title">メニュー</h1>
-    <div class="title-line"></div>
-  </header>
 
-  <!-- タブ -->
-  <div class="tabs">
-    <div class="tab active" data-category="ramen">ラーメン</div>
-    <div class="tab" data-category="tsukemen">つけ麺</div>
-    <div class="tab" data-category="side">サイド</div>
-    <div class="tab" data-category="drink">ドリンク</div>
-  </div>
+  <!-- 左上固定ボタン -->
+  <a href="index.html" class="back-home">トップページに戻る</a>
 
-  <!-- 商品一覧 -->
-  <div class="menu-grid">
+  <div class="container">
+    <h1>メニュー</h1>
 
-    <!-- ラーメン -->
-    <div class="item" data-category="ramen">
-      <img src="https://placehold.jp/400x250.png?text=ラーメン" />
-      <div class="price-tag">800円</div>
-      <div class="item-info">
-        <div class="item-title">醤油ラーメン</div>
-        <div class="item-desc">すっきりとした旨味の王道ラーメン</div>
+    <div class="tabs">
+      <div class="tab active" data-target="shina">志那そば</div>
+      <div class="tab" data-target="nintama">にんたまラーメン</div>
+      <div class="tab" data-target="gyokai">魚介とんこつ</div>
+    </div>
+
+    <!-- 志那そば -->
+    <div id="shina" class="items active">
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200?text=Shina+Soba" alt="">
+        <h3>志那そば</h3>
+        <span class="price">800円</span>
+        <div class="detail">ここに詳細説明が入ります。</div>
       </div>
     </div>
 
-    <!-- ラーメン 2 -->
-    <div class="item" data-category="ramen">
-      <img src="https://placehold.jp/400x250.png?text=味噌ラーメン" />
-      <div class="price-tag">900円</div>
-      <div class="item-info">
-        <div class="item-title">味噌ラーメン</div>
-        <div class="item-desc">濃厚でコクのある味噌スープ</div>
+    <!-- にんたま -->
+    <div id="nintama" class="items">
+      <div class="card">
+        <img src="https://via.placeholder.com/300x200?text=Nintama" alt="">
+        <h3>にんたまラーメン</h3>
+        <span class="price">850円</span>
+        <div class="detail">ここに詳細説明が入ります。</div>
       </div>
     </div>
 
-    <!-- つけ麺 -->
-    <div class="item" data-category="tsukemen">
-      <img src="https://placehold.jp/400x250.png?text=つけ麺" />
-      <div class="price-tag">950円</div>
-      <div class="item-info">
-        <div class="item-title">魚介豚骨つけ麺</div>
-        <div class="item-desc">濃厚つけダレが麺に絡む一杯</div>
-      </div>
-    </div>
-
-    <!-- サイド -->
-    <div class="item" data-category="side">
-      <img src="https://placehold.jp/400x250.png?text=餃子" />
-      <div class="price-tag">350円</div>
-      <div class="item-info">
-        <div class="item-title">餃子（6個）</div>
-        <div class="item-desc">外はパリッと中はジューシー</div>
-      </div>
-    </div>
-
-    <!-- ドリンク -->
-    <div class="item" data-category="drink">
-      <img src="https://placehold.jp/400x250.png?text=ドリンク" />
-      <div class="price-tag">200円</div>
-      <div class="item-info">
-        <div class="item-title">烏龍茶</div>
-        <div class="item-desc">食事と相性抜群のさっぱり感</div>
-      </div>
-    </div>
-
-  </div>
-
-  <script>
-    const tabs = document.querySelectorAll('.tab');
-    const items = document.querySelectorAll('.item');
-
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-
-        const category = tab.dataset.category;
-
-        items.forEach(item => {
-          item.style.display = category === item.dataset.category ? 'block' : 'none';
-        });
-      });
-    });
-  </script>
-  <div class="back-button" style="text-align:center; margin:40px 0;">
-    <a href="index.html" class="btn-back" style="display:inline-block; padding:12px 24px; background:#c62828; color:#fff; border-radius:8px; text-decoration:none; font-size:1.1rem;">トップページに戻る</a>
-  </div>
-
-  <!-- Scroll to Top Button -->
-  <button id="scrollTopBtn" style="position:fixed; bottom:30px; right:30px; padding:14px 18px; background:#c62828; color:#fff; border:none; border-radius:50%; font-size:18px; cursor:pointer; display:none; z-index:1000;">↑</button>
-
-  <script>
-    const btn = document.getElementById('scrollTopBtn');
-    window.addEventListener('scroll', () => {
-      btn.style.display = window.scrollY > 300 ? 'block' : 'none';
-    });
-    btn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  </script>
-
-</body>
-</html>
+    <!-- 魚介とんこつ -->
+    <div id="gyokai" class="items">
+      <div class="card">
+        <img src="htt
