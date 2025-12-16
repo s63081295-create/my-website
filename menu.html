@@ -129,6 +129,34 @@
       cursor: pointer;
       display: none;
     }
+
+
+    /* トップページに戻るボタン（左上固定・常時表示） */
+.back-home-btn {
+  position: fixed;
+  top: 70px;          /* 少し下に配置 */
+  left: 20px;
+  background: #c62828;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  z-index: 9999;      /* ← これが重要 */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+}
+
+/* スマホ調整 */
+@media (max-width: 600px) {
+  .back-home-btn {
+    top: 60px;
+    left: 10px;
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -237,3 +265,4 @@
 
 </body>
 </html>
+
